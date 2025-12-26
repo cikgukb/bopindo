@@ -14,42 +14,33 @@ document.getElementById('leadForm').addEventListener('submit', function (e) {
         name: formData.get('name'),
         email: formData.get('email'),
         phone: formData.get('phone'),
-        city: formData.get('city'),
-        timestamp: new Date().toLocaleString('id-ID')
+        city: formData.get('city')
     };
 
-    // Google Apps Script Web App URL (User needs to replace this)
-    const scriptURL = 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE';
+    // Google Apps Script Web App URL
+    const scriptURL = 'https://script.google.com/macros/s/AKfycby3NcssppO2N_32SOBDBD4Lx2r6qPki73TWoaEBWOItdm0FAaN41jnqyBV08dB168AO/exec';
     const whatsappLink = 'https://chat.whatsapp.com/IPGaiff27K6CypgOwGrKkL';
 
     // Log data (for testing purposes)
     console.log('Form data being sent:', data);
 
-    // To enable Google Sheets sending, uncomment the fetch block below 
-    // and provide your scriptURL above.
-    /*
+    // Send to Google Sheets using JSON
     fetch(scriptURL, {
         method: 'POST',
         mode: 'no-cors',
         cache: 'no-cache',
-        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)
     })
-    .then(response => {
-        handleSuccess();
-    })
-    .catch(error => {
-        console.error('Error!', error.message);
-        alert('Terjadi kesalahan. Silakan coba lagi atau hubungi via WhatsApp.');
-        submitBtn.disabled = false;
-        submitBtn.innerText = originalBtnText;
-    });
-    */
-
-    // For demonstration, we proceed directly to success flow
-    setTimeout(() => {
-        handleSuccess();
-    }, 1500);
+        .then(response => {
+            console.log('Success response received');
+            handleSuccess();
+        })
+        .catch(error => {
+            console.error('Error!', error.message);
+            alert('Terjadi kesalahan. Silakan coba lagi atau hubungi via WhatsApp.');
+            submitBtn.disabled = false;
+            submitBtn.innerText = originalBtnText;
+        });
 
     function handleSuccess() {
         // 1. Show the Modal
@@ -72,10 +63,7 @@ document.getElementById('leadForm').addEventListener('submit', function (e) {
 });
 
 // Animation on scroll observer
-const observerOptions = {
-    threshold: 0.1
-};
-
+const observerOptions = { threshold: 0.1 };
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
