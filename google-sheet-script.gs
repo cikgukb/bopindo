@@ -1,21 +1,22 @@
 /**
  * Google Apps Script to handle form submissions from the Landing Page.
  * 
- * Instructions:
- * 1. Open your Google Sheet.
- * 2. Go to Extensions > Apps Script.
- * 3. Delete any existing code and paste this code.
- * 4. Click Save (disk icon) and name it "Landing Page Handler".
- * 5. Click "Deploy" > "New Deployment".
- * 6. Select Type: "Web App".
- * 7. Description: "MLM Form Handler".
- * 8. Execute as: "Me".
- * 9. Who has access: "Anyone".
- * 10. Click "Deploy" and Authorize access.
- * 11. Copy the "Web App URL" and paste it into your script.js file.
+ * Instructions to link to your "mlm indonesia" sheet:
+ * 1. Open your "mlm indonesia" Google Sheet.
+ * 2. In the first row, add these headers: name, email, phone, city, timestamp (case-sensitive).
+ * 3. Go to Extensions > Apps Script.
+ * 4. Delete any existing code and paste this code.
+ * 5. Click Save (disk icon) and name it "Landing Page Handler".
+ * 6. Click "Deploy" > "New Deployment".
+ * 7. Select Type: "Web App".
+ * 8. Description: "MLM Form Handler".
+ * 9. Execute as: "Me".
+ * 10. Who has access: "Anyone".
+ * 11. Click "Deploy" and Authorize access.
+ * 12. Copy the "Web App URL" and paste it into your script.js file.
  */
 
-var sheetName = 'Sheet1'; // Change this if your sheet name is different
+var sheetName = 'Sheet1'; // Change this if your sheet name is different (e.g., 'Leads')
 var scriptProp = PropertiesService.getScriptProperties();
 
 function setup() {

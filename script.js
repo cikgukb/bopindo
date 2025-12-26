@@ -1,9 +1,9 @@
-document.getElementById('leadForm').addEventListener('submit', function(e) {
+document.getElementById('leadForm').addEventListener('submit', function (e) {
     e.preventDefault();
 
     const submitBtn = document.getElementById('submitBtn');
     const originalBtnText = submitBtn.innerText;
-    
+
     // Change button state
     submitBtn.innerText = 'Memproses...';
     submitBtn.disabled = true;
@@ -12,6 +12,7 @@ document.getElementById('leadForm').addEventListener('submit', function(e) {
     const formData = new FormData(this);
     const data = {
         name: formData.get('name'),
+        email: formData.get('email'),
         phone: formData.get('phone'),
         city: formData.get('city'),
         timestamp: new Date().toLocaleString('id-ID')
@@ -24,25 +25,28 @@ document.getElementById('leadForm').addEventListener('submit', function(e) {
     // Log data (for testing purposes)
     console.log('Form data being sent:', data);
 
-    // Simulate sending to Google Sheets (Replace with actual fetch if URL is provided)
-    // fetch(scriptURL, {
-    //     method: 'POST',
-    //     mode: 'no-cors',
-    //     cache: 'no-cache',
-    //     headers: { 'Content-Type': 'application/json' },
-    //     body: JSON.stringify(data)
-    // })
-    // .then(response => {
-    //     handleSuccess();
-    // })
-    // .catch(error => {
-    //     console.error('Error!', error.message);
-    //     alert('Terjadi kesalahan. Silakan coba lagi atau hubungi via WhatsApp.');
-    //     submitBtn.disabled = false;
-    //     submitBtn.innerText = originalBtnText;
-    // });
+    // To enable Google Sheets sending, uncomment the fetch block below 
+    // and provide your scriptURL above.
+    /*
+    fetch(scriptURL, {
+        method: 'POST',
+        mode: 'no-cors',
+        cache: 'no-cache',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+    })
+    .then(response => {
+        handleSuccess();
+    })
+    .catch(error => {
+        console.error('Error!', error.message);
+        alert('Terjadi kesalahan. Silakan coba lagi atau hubungi via WhatsApp.');
+        submitBtn.disabled = false;
+        submitBtn.innerText = originalBtnText;
+    });
+    */
 
-    // For now, let's proceed directly to the success flow to show functionality
+    // For demonstration, we proceed directly to success flow
     setTimeout(() => {
         handleSuccess();
     }, 1500);
@@ -51,7 +55,7 @@ document.getElementById('leadForm').addEventListener('submit', function(e) {
         // 1. Show the Modal
         const modalOverlay = document.getElementById('modalOverlay');
         const modalContent = document.getElementById('modalContent');
-        
+
         modalOverlay.style.display = 'flex';
         setTimeout(() => {
             modalContent.classList.add('show');
