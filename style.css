@@ -1,0 +1,291 @@
+:root {
+    --primary: #00a8ff;
+    --primary-dark: #0097e6;
+    --secondary: #2f3640;
+    --accent: #fbc531;
+    --background: #f5f6fa;
+    --card-bg: rgba(255, 255, 255, 0.9);
+    --text-main: #2f3640;
+    --text-muted: #718093;
+    --white: #ffffff;
+    --gradient: linear-gradient(135deg, #00a8ff 0%, #0097e6 100%);
+    --glass: rgba(255, 255, 255, 0.7);
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Outfit', 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+    background-color: var(--background);
+    color: var(--text-main);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Typography */
+h1,
+h2,
+h3 {
+    font-weight: 800;
+    line-height: 1.2;
+}
+
+.text-gradient {
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    /* Added for compatibility */
+    -webkit-text-fill-color: transparent;
+}
+
+/* Layout */
+section {
+    padding: 80px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.hero {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: radial-gradient(circle at top right, rgba(0, 168, 255, 0.1), transparent),
+        radial-gradient(circle at bottom left, rgba(0, 151, 230, 0.05), transparent);
+}
+
+.hero h1 {
+    font-size: clamp(3rem, 10vw, 6rem);
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 1.25rem;
+    color: var(--text-muted);
+    max-width: 600px;
+}
+
+/* Problem Section */
+.problem-section {
+    background: var(--secondary);
+    color: var(--white);
+    border-radius: 40px;
+    margin: 40px 20px;
+    padding: 60px;
+    box-shadow: var(--shadow);
+}
+
+.newspaper-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.news-card {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 30px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.news-card:hover {
+    transform: translateY(-10px);
+}
+
+.news-tag {
+    color: var(--accent);
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 0.8rem;
+    margin-bottom: 10px;
+    display: block;
+}
+
+/* Benefits */
+.benefit-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.benefit-card {
+    background: var(--white);
+    padding: 40px;
+    border-radius: 30px;
+    box-shadow: var(--shadow);
+    text-align: center;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.benefit-card:hover {
+    background: var(--primary);
+    color: var(--white);
+}
+
+.benefit-card:hover i {
+    color: var(--white);
+}
+
+.benefit-card i {
+    font-size: 3rem;
+    color: var(--primary);
+    margin-bottom: 20px;
+    display: block;
+}
+
+/* Form */
+.form-container {
+    background: var(--white);
+    padding: 50px;
+    border-radius: 40px;
+    box-shadow: var(--shadow);
+    max-width: 800px;
+    margin: 60px auto;
+}
+
+.input-group {
+    margin-bottom: 25px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+input,
+select {
+    width: 100%;
+    padding: 15px 20px;
+    border: 2px solid #edeff2;
+    border-radius: 15px;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+input:focus,
+select:focus {
+    border-color: var(--primary);
+}
+
+button {
+    width: 100%;
+    padding: 18px;
+    background: var(--gradient);
+    color: var(--white);
+    border: none;
+    border-radius: 15px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 10px 20px rgba(0, 168, 255, 0.3);
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 25px rgba(0, 168, 255, 0.4);
+}
+
+/* Modal */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: var(--white);
+    padding: 50px;
+    border-radius: 40px;
+    max-width: 500px;
+    text-align: center;
+    position: relative;
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+}
+
+.modal-content.show {
+    transform: scale(1);
+}
+
+.zoom-link,
+.calendar-link {
+    display: block;
+    padding: 15px;
+    color: white;
+    text-decoration: none;
+    border-radius: 10px;
+    font-weight: bold;
+    transition: opacity 0.3s ease;
+}
+
+.zoom-link {
+    background: #2D8CFF;
+    /* Zoom Blue */
+}
+
+.calendar-link {
+    background: #4285F4;
+    /* Google Blue */
+}
+
+.zoom-link:hover,
+.calendar-link:hover {
+    opacity: 0.9;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate {
+    animation: fadeInUp 0.8s ease forwards;
+}
+
+/* Mobile Tweaks */
+@media (max-width: 768px) {
+    section {
+        padding: 50px 15px;
+    }
+
+    .hero h1 {
+        font-size: 3.5rem;
+    }
+
+    .problem-section {
+        padding: 30px;
+        margin: 20px 10px;
+    }
+
+    .form-container {
+        padding: 30px;
+    }
+}
